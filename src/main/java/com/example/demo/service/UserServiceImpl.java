@@ -1,9 +1,11 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.request.UserPostRequest;
+import com.example.demo.dto.response.UserDetailsResponse;
 import com.example.demo.dto.response.UserRateResponse;
 import com.example.demo.exceptions.BadRequestException;
 import com.example.demo.exceptions.UserNotFoundException;
+import com.example.demo.model.Authority;
 import com.example.demo.model.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,9 +35,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUser(String username) {
-        Optional<User> user = userRepository.findByUsername(username);
-        return user;
+    public UserDetailsResponse getUser(String username1) {
+        long user_id = 0;
+        String username = null;
+        boolean enabled = false;
+        String email = null;
+        Set<Authority> authorities = null;
+
+        Optional<User> user = userRepository.findByUsername(username1);
+        if (user.isPresent()) {
+            user_id = user.get().getUser_id();
+            username = user.get().getUsername();
+            enabled = user.get().isEnabled();
+            email = user.get().getEmail();
+            authorities = user.get().getAuthorities();
+        }
+
+        return new UserDetailsResponse(user_id, username, enabled, email, authorities);
     }
 
     @Override

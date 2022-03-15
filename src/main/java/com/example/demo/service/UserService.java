@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.request.UserPostRequest;
+import com.example.demo.dto.response.UserDetailsResponse;
 import com.example.demo.dto.response.UserRateResponse;
 import com.example.demo.model.User;
 
@@ -11,7 +12,7 @@ public interface UserService {
 
     public Iterable<User> findAll();
 
-    Optional<User> getUser(String username);
+    public UserDetailsResponse getUser(String username);
 
     public String create(UserPostRequest userPostRequest);
 

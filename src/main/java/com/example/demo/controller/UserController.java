@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.request.UserPostRequest;
+import com.example.demo.dto.response.UserDetailsResponse;
 import com.example.demo.dto.response.UserRateResponse;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
@@ -33,8 +34,9 @@ public class UserController {
 
     @GetMapping(value = "/user/{username}")
     public ResponseEntity getUser(@PathVariable("username") String username) {
-        Optional<User> user = userService.getUser(username);
-        return ResponseEntity.ok(user);
+//        Optional<User> user = userService.getUser(username);
+        UserDetailsResponse userDetailsResponse = userService.getUser(username);
+        return ResponseEntity.ok(userDetailsResponse);
     }
 
     @GetMapping(value = "user/id/{user_id}")
