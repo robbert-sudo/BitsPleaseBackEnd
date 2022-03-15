@@ -11,5 +11,3 @@ public class UserRateResponse {
     public String getRatedUsername() {return ratedUsername;}
 
 }
-
-
