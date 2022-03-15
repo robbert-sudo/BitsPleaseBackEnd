@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "games")
@@ -27,7 +28,7 @@ public class Game {
     public String uploader_name;
 
     @Column(nullable = false)
-    public float price;
+    public BigDecimal price;
 
     @Column(length = 250000)
     public String image;
@@ -79,8 +80,8 @@ public class Game {
 
     public void setUploader_name(String uploader_name) {this.uploader_name = uploader_name;}
 
-    public float getPrice() {return price;}
-    public void setPrice(float price) {this.price = price;}
+    public BigDecimal getPrice() {return price;}
+    public void setPrice(BigDecimal price) {this.price = price;}
     public String getImage() {return image;}
     public void setImage(String image) {this.image = image;}
 
