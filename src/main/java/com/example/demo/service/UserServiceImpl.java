@@ -133,10 +133,31 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public Iterable<User> findAllByDisabled() {
-        return userRepository.findAllByEnabled(false);
+    public Set<UserDetailsResponse> findAllByDisabled() {
+        long user_id = 0;
+        String username = null;
+        boolean enabled = false;
+        String email = null;
+        Set<Authority> authorities = null;
+        Set<UserDetailsResponse> userDetailsResponses = new HashSet<>();
+
+        Iterable<User> users = userRepository.findAllByEnabled(false);
+        for (User user : users) {
+            user_id = user.getUser_id();
+            username = user.getUsername();
+            enabled = user.isEnabled();
+            email = user.getEmail();
+            authorities = user.getAuthorities();
+            UserDetailsResponse userDetailsResponse = new UserDetailsResponse(user_id, username, enabled, email, authorities);
+            userDetailsResponses.add(userDetailsResponse);
+        }
+        return userDetailsResponses;
     }
 
 
 
-}
+    }
+
+
+
+

@@ -23,5 +23,5 @@ public interface UserService {
 
     void disableUser(long user_id);
 
-    Iterable<User> findAllByDisabled();
+    Set<UserDetailsResponse> findAllByDisabled();
 }
