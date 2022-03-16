@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.dto.response.UserDetailsResponse;
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping(value = "/admin")
@@ -19,8 +22,8 @@ public class AdminController {
 
     @GetMapping(value = "/deletedusers")
     public ResponseEntity GetDisabledUsers() {
-        Iterable<User> users = userService.findAllByDisabled();
-        return ResponseEntity.ok(users);
+        Set<UserDetailsResponse> userDetailsResponse = userService.findAllByDisabled();
+        return ResponseEntity.ok(userDetailsResponse);
     }
 
 
