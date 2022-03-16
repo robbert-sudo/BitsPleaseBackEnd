@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
@@ -29,10 +30,29 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Iterable<User> findAll() {
+//    stop gevonden users in een dto zonder wachtwoord zodat deze nooit de database verlaat.
+    public Set<UserDetailsResponse> findAll() {
+        long user_id = 0;
+        String username = null;
+        boolean enabled = false;
+        String email = null;
+        Set<Authority> authorities = null;
+        Set<UserDetailsResponse> userDetailsResponses = new HashSet<>();
+
         Iterable<User> users = userRepository.findAll();
-        return users;
+        for (User user : users) {
+
+            user_id = user.getUser_id();
+            username = user.getUsername();
+            enabled = user.isEnabled();
+            email = user.getEmail();
+            authorities = user.getAuthorities();
+            UserDetailsResponse userDetailsResponse = new UserDetailsResponse(user_id, username, enabled, email, authorities);
+            userDetailsResponses.add(userDetailsResponse);
+        }
+        return userDetailsResponses;
     }
+
 
     @Override
     public UserDetailsResponse getUser(String username1) {
