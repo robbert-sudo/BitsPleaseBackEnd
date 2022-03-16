@@ -12,6 +12,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.Optional;
+import java.util.Set;
 
 
 @RestController
@@ -27,9 +28,8 @@ public class UserController {
 
     @GetMapping(value = "/users")
     public ResponseEntity getUsers() {
-        Iterable<User> users;
-        users = userService.findAll();
-        return ResponseEntity.ok(users);
+        Set<UserDetailsResponse> userDetailsResponses = userService.findAll();
+        return ResponseEntity.ok(userDetailsResponses);
     }
 
     @GetMapping(value = "/user/{username}")

@@ -6,11 +6,12 @@ import com.example.demo.dto.response.UserRateResponse;
 import com.example.demo.model.User;
 
 import java.util.Optional;
+import java.util.Set;
 
 
 public interface UserService {
 
-    public Iterable<User> findAll();
+    public Set<UserDetailsResponse> findAll();
 
     public UserDetailsResponse getUser(String username);
 
