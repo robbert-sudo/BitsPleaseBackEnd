@@ -35,6 +35,10 @@ public class User implements Serializable {
             fetch = FetchType.EAGER)
     private Set<Authority> authorities = new HashSet<>();
 
+    public String getNameAndEmail() {
+        return this.getUsername() + " " + this.getEmail();
+    }
+
 
     public long getUser_id() {return user_id;}
     public void setUser_id(long user_id) {this.user_id = user_id;}
