@@ -1,12 +1,7 @@
-package model;
+package bitspleaseApp.model;
 
-import bitspleaseApp.model.Authority;
-import bitspleaseApp.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 

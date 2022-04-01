@@ -1,6 +1,5 @@
-package model;
+package bitspleaseApp.model;
 
-import bitspleaseApp.model.Authority;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -28,8 +27,8 @@ class AuthorityTest {
     @Test
     void testGetAuthority() {
         String expectedAuthority = "ROLE_USER";
-        String actualAthority = this.authority.getAuthority();
-        assertEquals(expectedAuthority, actualAthority);
+        String actualAuthority = this.authority.getAuthority();
+        assertEquals(expectedAuthority, actualAuthority);
     }
 
     @Test
@@ -63,5 +62,22 @@ class AuthorityTest {
         assertEquals(expectedUsername, actualUsername );
 
     }
+
+    @Test
+    void testAuthority() {
+        Authority authority = new Authority(2, "ROLE_USER", "user");
+        long expectedUserId = 2;
+        String expectedAuthority = "ROLE_USER";
+        String expectedUsername = "user";
+        long actualUserId = authority.getUser_id();
+        String actualAuthority = authority.getAuthority();
+        String actualUsername = authority.getUsername();
+        assertEquals(expectedUserId, actualUserId);
+        assertEquals(expectedAuthority, actualAuthority);
+        assertEquals(expectedUsername, actualUsername);
+
+
+    }
+
 
 }
