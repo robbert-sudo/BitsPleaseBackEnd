@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserTest {
 
     private User user;
-    private Authority authority;
+//    private Authority authority;
 
     @BeforeEach
     void setUp() {
