@@ -20,7 +20,7 @@ public class AdminController {
     }
 
     @GetMapping(value = "/deletedusers")
-    public ResponseEntity GetDisabledUsers() {
+    public ResponseEntity getDisabledUsers() {
         Set<UserDetailsResponse> userDetailsResponse = userService.findAllByDisabled();
         return ResponseEntity.ok(userDetailsResponse);
     }
