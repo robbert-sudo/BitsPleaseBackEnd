@@ -71,7 +71,7 @@ class SellersRatingServiceImplTest {
     }
 
     @Test
-    void findAll() {
+    void findAllWithZeroRatings() {
         //arrange
         SellersRatingRepository sellersRatingRepository = mock(SellersRatingRepository.class);
 
