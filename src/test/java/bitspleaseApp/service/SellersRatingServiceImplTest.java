@@ -2,10 +2,16 @@ package bitspleaseApp.service;
 
 import bitspleaseApp.model.SellersRating;
 import bitspleaseApp.repository.SellersRatingRepository;
+import org.hamcrest.collection.IsEmptyCollection;
+import org.hamcrest.collection.IsEmptyIterable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
+import static java.util.Optional.empty;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -63,36 +69,30 @@ class SellersRatingServiceImplTest {
         assertEquals(0.0, result);
 
     }
-//
-//    @Test
-//    void findAll() {
-//        //arrange
-//        SellersRatingRepository sellersRatingRepository = mock(SellersRatingRepository.class);
-//
-//        ArrayList<SellersRating> fakeresult = new ArrayList<SellersRating>();
-//        SellersRating fakesellerRating = new SellersRating(1, 1, 7);
-//        SellersRating fakesellerRating2 = new SellersRating(2, 2, 8);
-//        SellersRating fakesellerRating3 = new SellersRating(3, 2, 8);
-//        SellersRating fakesellerRating4 = new SellersRating(4, 3, 7);
-//        fakeresult.add(fakesellerRating2);
-//        fakeresult.add(fakesellerRating);
-//        fakeresult.add(fakesellerRating3);
-//        fakeresult.add(fakesellerRating4);
-//        when(sellersRatingRepository.findAll())
-//                .thenReturn(fakeresult);
-//
-//        SellersRatingServiceImpl sellersRatingServiceImpl = new SellersRatingServiceImpl(sellersRatingRepository);
-//
-//        //act
-////        float result = sellersRatingServiceImpl.findAll();
-//
-////
-////        //assert
-////        assertEquals(7.5, result);
-////
-////        //act
-////
-////        //assert
-//    }
+
+    @Test
+    void findAll() {
+        //arrange
+        SellersRatingRepository sellersRatingRepository = mock(SellersRatingRepository.class);
+
+        ArrayList<SellersRating> fakeresult = new ArrayList<SellersRating>();
+
+        when(sellersRatingRepository.findAll())
+                .thenReturn(fakeresult);
+
+        SellersRatingServiceImpl sellersRatingServiceImpl = new SellersRatingServiceImpl(sellersRatingRepository);
+
+        //act
+        Iterable<SellersRating> result = sellersRatingServiceImpl.findAll();
+
+
+        //assert
+        assertThat(result, IsEmptyIterable.emptyIterable());
+//        assertThat(result, IsEmptyCollection.empty());
+//        assertEquals( <[]> , fakeresult);
+//        assertThat(fakeresult, is(empty()));
+
+
+    }
 
 }
