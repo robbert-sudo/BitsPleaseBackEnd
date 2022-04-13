@@ -11,10 +11,9 @@ public class SellersRatingServiceImpl implements SellersRatingService {
     private SellersRatingRepository sellersRatingRepository;
 
     @Autowired
-    private SellersRatingServiceImpl(SellersRatingRepository sellersRatingRepository) {
+    SellersRatingServiceImpl(SellersRatingRepository sellersRatingRepository) {
         this.sellersRatingRepository = sellersRatingRepository;
     }
-
 
 
     @Override
@@ -47,9 +46,13 @@ public class SellersRatingServiceImpl implements SellersRatingService {
             total += sellersRating.getRating();
             size += 1;
         }
-        float averageRating = total / size;
+        if (size == 0) {
+            float averageRating = 0;
+            return averageRating;
+        } else {
+            float averageRating = total / size;
 
-        return averageRating;
+            return averageRating;
+        }
     }
-
 }

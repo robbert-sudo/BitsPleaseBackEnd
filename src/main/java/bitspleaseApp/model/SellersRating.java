@@ -17,6 +17,12 @@ public class SellersRating {
     @Column
     private long rating;
 
+    public SellersRating(long rating_id, long ratedUserId, long rating) {
+        this.rating_id = rating_id;
+        this.ratedUserId = ratedUserId;
+        this.rating = rating;
+    }
+
     public long getRatingId() {return rating_id;}
     public void setRatingId(long rating_id) {this.rating_id = rating_id;}
     public long getRatedUserId() {return ratedUserId;}
