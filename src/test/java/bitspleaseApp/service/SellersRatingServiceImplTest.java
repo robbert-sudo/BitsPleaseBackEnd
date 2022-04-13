@@ -62,6 +62,37 @@ class SellersRatingServiceImplTest {
         //assert
         assertEquals(0.0, result);
 
-
     }
+//
+//    @Test
+//    void findAll() {
+//        //arrange
+//        SellersRatingRepository sellersRatingRepository = mock(SellersRatingRepository.class);
+//
+//        ArrayList<SellersRating> fakeresult = new ArrayList<SellersRating>();
+//        SellersRating fakesellerRating = new SellersRating(1, 1, 7);
+//        SellersRating fakesellerRating2 = new SellersRating(2, 2, 8);
+//        SellersRating fakesellerRating3 = new SellersRating(3, 2, 8);
+//        SellersRating fakesellerRating4 = new SellersRating(4, 3, 7);
+//        fakeresult.add(fakesellerRating2);
+//        fakeresult.add(fakesellerRating);
+//        fakeresult.add(fakesellerRating3);
+//        fakeresult.add(fakesellerRating4);
+//        when(sellersRatingRepository.findAll())
+//                .thenReturn(fakeresult);
+//
+//        SellersRatingServiceImpl sellersRatingServiceImpl = new SellersRatingServiceImpl(sellersRatingRepository);
+//
+//        //act
+////        float result = sellersRatingServiceImpl.findAll();
+//
+////
+////        //assert
+////        assertEquals(7.5, result);
+////
+////        //act
+////
+////        //assert
+//    }
+
 }
