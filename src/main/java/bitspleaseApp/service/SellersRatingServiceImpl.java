@@ -46,13 +46,13 @@ public class SellersRatingServiceImpl implements SellersRatingService {
             total += sellersRating.getRating();
             size += 1;
         }
+        float averageRating;
         if (size == 0) {
-            float averageRating = 0;
-            return averageRating;
+            averageRating = 0;
         } else {
-            float averageRating = total / size;
+            averageRating = total / size;
 
-            return averageRating;
         }
+        return averageRating;
     }
 }

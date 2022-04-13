@@ -17,6 +17,10 @@ public class SellersRating {
     @Column
     private long rating;
 
+    public SellersRating() {
+
+    }
+
     public SellersRating(long rating_id, long ratedUserId, long rating) {
         this.rating_id = rating_id;
         this.ratedUserId = ratedUserId;
