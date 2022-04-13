@@ -2,16 +2,12 @@ package bitspleaseApp.service;
 
 import bitspleaseApp.model.SellersRating;
 import bitspleaseApp.repository.SellersRatingRepository;
-import org.hamcrest.collection.IsEmptyCollection;
 import org.hamcrest.collection.IsEmptyIterable;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static java.util.Optional.empty;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -88,11 +84,6 @@ class SellersRatingServiceImplTest {
 
         //assert
         assertThat(result, IsEmptyIterable.emptyIterable());
-//        assertThat(result, IsEmptyCollection.empty());
-//        assertEquals( <[]> , fakeresult);
-//        assertThat(fakeresult, is(empty()));
-
-
     }
 
 }
