@@ -25,7 +25,7 @@ class SellersRatingServiceImplTest {
         SellersRating fakesellerRating = new SellersRating(1, 1, 7);
         SellersRating fakesellerRating2 = new SellersRating(2, 1, 8);
         SellersRating fakesellerRating3 = new SellersRating(3, 1, 8);
-        SellersRating fakesellerRating4 = new SellersRating(4, 1, 7);
+        SellersRating fakesellerRating4 = new SellersRating(4, 1, 6);
         fakeresult.add(fakesellerRating2);
         fakeresult.add(fakesellerRating);
         fakeresult.add(fakesellerRating3);
@@ -40,7 +40,7 @@ class SellersRatingServiceImplTest {
 
 
         //assert
-        assertEquals(7.5, result);
+        assertEquals(7.25, result);
 
     }
 
