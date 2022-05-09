@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 public class GameServiceImplTest {
 
     @Test
-    void findAllGames() {
+    void findAll() {
         //arrange
 
         GameRepository gameRepository = mock(GameRepository.class);
@@ -64,13 +64,13 @@ public class GameServiceImplTest {
 
         //assert
         assertEquals(3, size);
+    }
 
 
-
-
-
-
-
+    @Test
+    void findByName() {
 
     }
+
+
 }
