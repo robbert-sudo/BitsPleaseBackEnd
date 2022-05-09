@@ -4,11 +4,8 @@ import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.model.Authority;
 import bitspleaseApp.model.User;
 import bitspleaseApp.repository.UserRepository;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,28 +17,6 @@ class UserServiceImplTest {
 
     private UserDetailsResponse userDetailsResponse;
 
-
-
-//    @BeforeEach
-//    void setUp() {
-//        this.authority = new HashSet<>();
-//
-//        this.authority1 = new Authority();
-//        this.authority1.setUser_id(1);
-//        this.authority1.setUsername("admin");
-//        this.authority1.setAuthority("ROLE_USER");
-//
-//
-//
-//        this.user = new User();
-//        this.user.setUser_id(1);
-//        this.user.setUsername("admin");
-//        this.user.setPassword("password");
-//        this.user.setEnabled(true);
-//        this.user.setEmail("admin@admin.min");
-//        this.user.setAuthorities(this.authority1);
-//
-//    }
 
     @Test
     void findAll() {
@@ -122,13 +97,29 @@ class UserServiceImplTest {
 
     @Test
     void getUserById() {
+        //arrange
+
+        //act
+
+        //assert
     }
 
     @Test
     void disableUser() {
+        //arrange
+
+        //act
+
+        //assert
     }
 
     @Test
     void findAllByDisabled() {
+        //arrange
+
+        //act
+
+        //assert
     }
+
 }

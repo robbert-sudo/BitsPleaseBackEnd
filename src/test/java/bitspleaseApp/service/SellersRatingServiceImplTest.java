@@ -38,10 +38,8 @@ class SellersRatingServiceImplTest {
         //act
         float result = sellersRatingServiceImpl.getAverageRatingBySeller(1);
 
-
         //assert
         assertEquals(7.25, result);
-
     }
 
     @Test

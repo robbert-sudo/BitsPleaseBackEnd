@@ -27,7 +27,6 @@ class UserTest {
         this.user.setPassword("password");
 
 
-
         this.authority = new Authority();
         this.authority.setUser_id(1);
         this.authority.setAuthority("ROLE_USER");
