@@ -21,6 +21,10 @@ public class UserDetailsResponse {
         this.authorities = authorities;
     }
 
+    public UserDetailsResponse() {
+
+    }
+
     public long getUser_id() {
         return user_id;
     }

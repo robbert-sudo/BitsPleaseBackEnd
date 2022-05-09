@@ -21,7 +21,7 @@ class SellersRatingServiceImplTest {
 
         SellersRatingRepository sellersRatingRepository = mock(SellersRatingRepository.class);
 
-        ArrayList<SellersRating> fakeresult = new ArrayList<SellersRating>();
+        ArrayList<SellersRating> fakeresult = new ArrayList<>();
         SellersRating fakesellerRating = new SellersRating(1, 1, 7);
         SellersRating fakesellerRating2 = new SellersRating(2, 1, 8);
         SellersRating fakesellerRating3 = new SellersRating(3, 1, 8);

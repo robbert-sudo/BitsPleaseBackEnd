@@ -32,6 +32,10 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    public UserServiceImpl() {
+
+    }
+
 
     @Override
 //    stop gevonden users in een dto zonder wachtwoord zodat deze nooit de database verlaat.
