@@ -44,19 +44,6 @@ class UserTest {
         authorities.add(authority1);
 
         this.user.setAuthorities(authorities);
-
-
-
-
-
-//
-//        authorities.add(authority1);
-
-
-//        this.user.setAuthorities(authorities);
-
-//        this.user.addAuthority( "ROLE_USER");
-//        this.user.addAuthority("ROLE_ADMIN");
     }
 
     @Test
@@ -185,46 +172,6 @@ class UserTest {
         String actualRole2 = this.authority1.getAuthority();
         //assert
         assertEquals(expectedRole2, actualRole2);
-//        Set<Authority> authorities1 = this.user.getAuthorities();
-//        String auth = authorities1.toString();
-//        String expectedauth = "ROLE_USER";
-//        assertEquals(expectedauth, auth);
-
-
-//        Set<Authority> authority = this.user.getAuthorities();
-//
-//        boolean expectedAuthority = true;
-//        boolean actualAuthority = authority.Authorities.contains("ROLE_USER");
-//        assertEquals(expectedAuthority, actualAuthority);
-//
-//        boolean expectedauth = false;
-//        boolean actualauth = authority.contains("ROLE_ADMIN");
-//        assertEquals(expectedauth, actualauth);
     }
 
-
-    @Test
-    void setAuthorities() {
-        //act
-        this.authority2 = new Authority();
-        this.authority2.setUser_id(1);
-        this.authority2.setAuthority("ROLE_SUPERUSER");
-        this.authority2.setUsername("admin");
-
-
-
-//        authorities.add(authority2);
-//
-//
-//
-//        this.user.setAuthorities(authority2);
-    }
-
-    @Test
-    void addAuthority() {
-    }
-
-    @Test
-    void testAddAuthority() {
-    }
 }
