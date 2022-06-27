@@ -13,7 +13,6 @@ class UserTest {
     private User user;
     private Authority authority;
     private Authority authority1;
-    private Authority authority2;
 
 
     @BeforeEach
