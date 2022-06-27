@@ -33,6 +33,17 @@ public class Game {
     @Column(length = 250000)
     public String image;
 
+    public Game() {
+
+    }
+
+    public Game(String name, String system, long uploader_id, String uploader_name, BigDecimal price) {
+        this.name = name;
+        this.system = system;
+        this.uploader_id = uploader_id;
+        this.uploader_name = uploader_name;
+        this.price = price;
+    }
 
 
 
