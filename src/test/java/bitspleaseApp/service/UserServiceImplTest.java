@@ -4,18 +4,47 @@ import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.model.Authority;
 import bitspleaseApp.model.User;
 import bitspleaseApp.repository.UserRepository;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class UserServiceImplTest {
 
+    @Mock
+    private UserRepository userRepository;
+    private AutoCloseable autoCloseable;
+    private UserService underTest;
     private UserDetailsResponse userDetailsResponse;
+
+    @BeforeEach
+    void setUp() {
+        autoCloseable = MockitoAnnotations.openMocks(this);
+        underTest = new UserServiceImpl(userRepository);
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        autoCloseable.close();
+    }
+
+
+    @Test
+    void canGetAllUsers() {
+        //when
+        underTest.findAll();
+        //then
+        verify(userRepository).findAll();
+    }
+
 
 
     @Test
@@ -53,7 +82,7 @@ class UserServiceImplTest {
         User user3 = new User();
         user3.setUser_id(3);
         user3.setUsername("bob");
-        user3.setEnabled(true);
+        user3.setEnabled(false);
         user3.setEmail("bob@bob.nl");
         user3.setAuthorities(null);
         users.add(user3);
@@ -61,25 +90,28 @@ class UserServiceImplTest {
         when(userRepository.findAll())
                 .thenReturn(users);
 
+
         //act
-        Iterable<User> allUsers = userRepository.findAll();
+//        Set<UserDetailsResponse> allUsers = userService.findAll();
 
-        Set<UserDetailsResponse> fakeUserDetailsResponses = new HashSet<>();
+//        Set<UserDetailsResponse> fakeUserDetailsResponses = new HashSet<>();
 
-        int actualSize = 0;
-        for (User user : allUsers) {
-            user_id = user.getUser_id();
-            username = user.getUsername();
-            enabled = user.isEnabled();
-            email = user.getEmail();
-            authorities = user.getAuthorities();
-            userDetailsResponse(user_id, username, enabled, email, authorities);
-            fakeUserDetailsResponses.add(userDetailsResponse);
-            actualSize++;
-        }
+//        int actualSize = 0;
+//        for (User user : allUsers) {
+//            user_id = user.getUser_id();
+//            username = user.getUsername();
+//            enabled = user.isEnabled();
+//            email = user.getEmail();
+//            authorities = user.getAuthorities();
+//            userDetailsResponse(user_id, username, enabled, email, authorities);
+//            fakeUserDetailsResponses.add(userDetailsResponse);
+//            actualSize++;
+//        }
 
-        //assert
-        assertEquals(3, actualSize);
+//        int actualSize = allUsers.size();
+//
+//        //assert
+//        assertEquals(3, actualSize);
 
     }
 
@@ -88,38 +120,28 @@ class UserServiceImplTest {
 
     @Test
     void getUser() {
-        //arrange
-
-        //act
-
-        //assert
+    //when
+        underTest.getUser("admin");
+        //then
+        verify(userRepository).findByUsername("admin");
     }
 
     @Test
     void getUserById() {
-        //arrange
-
-        //act
-
-        //assert
+        //when
+        underTest.getUserById(1);
+        //then
+        verify(userRepository).findById(1);
     }
 
-    @Test
-    void disableUser() {
-        //arrange
-
-        //act
-
-        //assert
-    }
 
     @Test
     void findAllByDisabled() {
-        //arrange
+        //when
+        underTest.findAllByDisabled();
+        //then
+        verify(userRepository).findAllByEnabled(false);
 
-        //act
-
-        //assert
     }
 
 }
