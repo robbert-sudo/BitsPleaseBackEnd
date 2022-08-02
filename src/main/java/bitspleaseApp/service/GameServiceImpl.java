@@ -30,8 +30,10 @@ public class GameServiceImpl implements GameService {
         return gameRepository.findBySystem(system);
     }
 
-    public void save(Game game) {
+    public Optional<Game> save(Game game) {
         gameRepository.save(game);
+        Optional<Game> savedGame = findById(game.id);
+        return savedGame;
     }
 
     public void deleteById(long id) {

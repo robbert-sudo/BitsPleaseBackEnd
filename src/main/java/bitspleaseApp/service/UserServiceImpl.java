@@ -6,6 +6,7 @@ import bitspleaseApp.dto.response.UserRateResponse;
 import bitspleaseApp.exceptions.BadRequestException;
 import bitspleaseApp.exceptions.UserNotFoundException;
 import bitspleaseApp.model.Authority;
+import bitspleaseApp.model.Game;
 import bitspleaseApp.model.User;
 import bitspleaseApp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,7 @@ public class UserServiceImpl implements UserService {
         boolean enabled = false;
         String email = null;
         Set<Authority> authorities = null;
+        Set<Game> games = null;
         Set<UserDetailsResponse> userDetailsResponses = new HashSet<>();
 
         Iterable<User> users = userRepository.findAll();
@@ -55,7 +57,8 @@ public class UserServiceImpl implements UserService {
             enabled = user.isEnabled();
             email = user.getEmail();
             authorities = user.getAuthorities();
-            UserDetailsResponse userDetailsResponse = new UserDetailsResponse(user_id, username, enabled, email, authorities);
+            games = user.getGames();
+            UserDetailsResponse userDetailsResponse = new UserDetailsResponse(user_id, username, enabled, email, authorities, games);
             userDetailsResponses.add(userDetailsResponse);
         }
         return userDetailsResponses;
@@ -69,6 +72,7 @@ public class UserServiceImpl implements UserService {
         boolean enabled = false;
         String email = null;
         Set<Authority> authorities = null;
+        Set<Game> games = null;
 
         Optional<User> user = userRepository.findByUsername(username1);
         if (user.isPresent()) {
@@ -77,9 +81,10 @@ public class UserServiceImpl implements UserService {
             enabled = user.get().isEnabled();
             email = user.get().getEmail();
             authorities = user.get().getAuthorities();
+            games = user.get().getGames();
         }
 
-        return new UserDetailsResponse(user_id, username, enabled, email, authorities);
+        return new UserDetailsResponse(user_id, username, enabled, email, authorities, games );
     }
 
     @Override
@@ -122,7 +127,8 @@ public class UserServiceImpl implements UserService {
 
             }
 
-        } catch (UserNotFoundException e) {
+        }
+        catch (UserNotFoundException e) {
             throw new UserNotFoundException();
         }
         return new UserRateResponse(ratedUserName);
@@ -135,8 +141,7 @@ public class UserServiceImpl implements UserService {
             User user = optionalUser.get();
             user.setEnabled(false);
             userRepository.save(user);
-        }
-        else {
+        } else {
             throw new UserNotFoundException();
         }
     }
@@ -147,7 +152,9 @@ public class UserServiceImpl implements UserService {
         boolean enabled = false;
         String email = null;
         Set<Authority> authorities = null;
+        Set<Game> games = null;
         Set<UserDetailsResponse> userDetailsResponses = new HashSet<>();
+
 
         Iterable<User> users = userRepository.findAllByEnabled(false);
         for (User user : users) {
@@ -156,15 +163,15 @@ public class UserServiceImpl implements UserService {
             enabled = user.isEnabled();
             email = user.getEmail();
             authorities = user.getAuthorities();
-            UserDetailsResponse userDetailsResponse = new UserDetailsResponse(user_id, username, enabled, email, authorities);
+            games = user.getGames();
+            UserDetailsResponse userDetailsResponse = new UserDetailsResponse(user_id, username, enabled, email, authorities, games);
             userDetailsResponses.add(userDetailsResponse);
         }
         return userDetailsResponses;
     }
 
 
-
-    }
+}
 
 
 

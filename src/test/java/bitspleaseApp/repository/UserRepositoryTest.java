@@ -1,6 +1,6 @@
 package bitspleaseApp.repository;
 
-import bitspleaseApp.model.Game;
+import bitspleaseApp.dto.response.UserRateResponse;
 import bitspleaseApp.model.User;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,11 +21,15 @@ class UserRepositoryTest {
     @BeforeEach
     void initEach() {
         String username = "Bob";
-        User user = new User(username, "password", "bob@bob.com");
-        User user1 = new User("Rob", "password", "Rob@bob.com");
+        User user = new User("Bob", "password", "bob@bob.com");
+//        user.setUser_id(1);
         underTest.save(user);
+        User user1 = new User("Rob", "password", "Rob@bob.com");
+//        user1.setUser_id(2);
         underTest.save(user1);
     }
+
+
 
     @AfterEach
     void tearDown() {
@@ -47,6 +51,7 @@ class UserRepositoryTest {
     @Test
     void findByUserNameWhenUsernameDoesNotExist() {
         //arrange
+        underTest.deleteAll();
 
 
         //act
@@ -62,13 +67,14 @@ class UserRepositoryTest {
     void findByIdWhenIdExists() {
         //arrange
 
+
         //act
         Optional<User> actualUser = underTest.findById(1);
-//        String actualUsername = actualUser.get().getUsername();
+
+        String ratedUserName = actualUser.get().getUsername();
 
         //assert
-//        assertEquals("Bob", actualUsername);
-        assertTrue(actualUser.isPresent());
+        assertEquals("Bob", ratedUserName);
     }
 
     @Test

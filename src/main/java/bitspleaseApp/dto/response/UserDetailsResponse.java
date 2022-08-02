@@ -1,6 +1,7 @@
 package bitspleaseApp.dto.response;
 
 import bitspleaseApp.model.Authority;
+import bitspleaseApp.model.Game;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,13 +13,15 @@ public class UserDetailsResponse {
     private boolean enabled;
     private String email;
     private Set<Authority> authorities = new HashSet<>();
+    private Set<Game> games = new HashSet<>();
 
-    public UserDetailsResponse(long user_id, String username, boolean enabled, String email, Set<Authority> authorities) {
+    public UserDetailsResponse(long user_id, String username, boolean enabled, String email, Set<Authority> authorities, Set<Game> games ) {
         this.user_id = user_id;
         this.username = username;
         this.enabled = enabled;
         this.email = email;
         this.authorities = authorities;
+        this.games = games;
     }
 
     public UserDetailsResponse() {
@@ -44,4 +47,6 @@ public class UserDetailsResponse {
     public Set<Authority> getAuthorities() {
         return authorities;
     }
+
+    public Set<Game> getGames() {return games; }
 }

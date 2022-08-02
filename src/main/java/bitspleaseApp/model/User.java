@@ -28,6 +28,15 @@ public class User implements Serializable {
     private String email;
 
     @OneToMany(
+            targetEntity = Game.class,
+            mappedBy = "uploader_id",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
+    )
+    private Set<Game> games = new HashSet<>();
+
+    @OneToMany(
             targetEntity = Authority.class,
             mappedBy = "user_id",
             cascade = CascadeType.ALL,
@@ -70,5 +79,11 @@ public class User implements Serializable {
     public void addAuthority(String authorityString) {
         this.authorities.add(new Authority(this.user_id, authorityString, this.username));
     }
+
+    public Set<Game> getGames() {return games;}
+
+    public void setGames(Set<Game> games) {this.games = games;}
+
+    public void addGame(Game game) {this.games.add(game);}
 
 }
