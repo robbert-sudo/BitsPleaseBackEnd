@@ -1,11 +1,12 @@
 package bitspleaseApp.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "games")
-public class Game {
+public class Game implements Serializable {
 
     @Id
     @Column

@@ -7,7 +7,7 @@ import java.util.Optional;
 public interface GameService {
 
 
-    void save(Game game);
+    Optional<Game> save(Game game);
 
     Iterable<Game> findAll();
 

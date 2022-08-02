@@ -48,7 +48,7 @@ public class  GameController {
     @PostMapping
     public ResponseEntity addGame(@RequestBody Game game) {
         gameService.save(game);
-        return ResponseEntity.ok("Toegevoegd met id " + game.id);
+        return ResponseEntity.ok(game);
     }
 
 
