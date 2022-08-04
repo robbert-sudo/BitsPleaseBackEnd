@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Entity
+@Entity(name = "games")
 @Table(name = "games")
 public class Game implements Serializable {
 

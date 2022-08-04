@@ -4,8 +4,10 @@ import bitspleaseApp.repository.GameRepository;
 import bitspleaseApp.exceptions.RecordNotFoundException;
 import bitspleaseApp.model.Game;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -22,6 +24,11 @@ public class GameServiceImpl implements GameService {
 
     public Iterable<Game> findByName(String name) {
         return gameRepository.findByNameContains(name);
+    }
+
+    public Iterable<Game> findBySystemAndNameContains(String system, String name) {
+      Iterable<Game> games = gameRepository.findBySystemAndNameContains(system, name);
+      return games;
     }
 
     public Optional<Game> findById(long id) { return gameRepository.findById(id); }
@@ -44,7 +51,6 @@ public class GameServiceImpl implements GameService {
             throw new RecordNotFoundException();
         }
     }
-
 
     @Override
     public void updateGame(long id, Game game) {

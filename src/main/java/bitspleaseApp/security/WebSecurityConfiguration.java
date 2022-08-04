@@ -79,11 +79,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/customers/**").hasRole("USER")
                 .antMatchers(POST,"/authenticate").permitAll()
                 .antMatchers(GET,"/games/**").authenticated()
+                .antMatchers(GET,"/games/systemandname/{system}").authenticated()
                 .antMatchers(POST,"/games").authenticated()
                 .antMatchers(DELETE,"/games/**").authenticated()
                 .antMatchers(PUT, "/games/**").authenticated()
                 .antMatchers("/sellerratings/**").authenticated()
                 .antMatchers(GET,"/authenticated").authenticated()
+
                 .anyRequest().denyAll()
                 .and()
                 .cors()
