@@ -30,7 +30,6 @@ public class GameController {
         return ResponseEntity.ok(games);
     }
 
-
     @GetMapping(value = "/id/{id}")
     public ResponseEntity findGamesById(@PathVariable long id) {
         Optional<Game> game = gameService.findById(id);
@@ -43,13 +42,11 @@ public class GameController {
         return ResponseEntity.ok(games);
     }
 
-
     @PostMapping
     public ResponseEntity addGame(@RequestBody Game game) {
         gameService.save(game);
         return ResponseEntity.ok(game);
     }
-
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteGame(@PathVariable long id) {
@@ -57,13 +54,11 @@ public class GameController {
         return ResponseEntity.ok("Verwijderd!");
     }
 
-
     @PutMapping(value = "/{id}")
     public ResponseEntity updateGame(@PathVariable long id, @RequestBody Game game) {
         gameService.updateGame(id, game);
         return ResponseEntity.ok("game aangepast.");
     }
-
 
     @GetMapping(value = "/systemandname/{system}")
     public ResponseEntity findBySystemAndName(@PathVariable String system, @RequestParam(value = "name", required = true) String name) {

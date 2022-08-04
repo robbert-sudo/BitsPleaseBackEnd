@@ -4,6 +4,7 @@ import bitspleaseApp.dto.request.UserPostRequest;
 import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.dto.response.UserRateResponse;
 import bitspleaseApp.exceptions.BadRequestException;
+import bitspleaseApp.exceptions.RecordNotFoundException;
 import bitspleaseApp.exceptions.UserNotFoundException;
 import bitspleaseApp.model.Authority;
 import bitspleaseApp.model.Game;
@@ -37,9 +38,56 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Override
+    public String create(UserPostRequest userPostRequest) {
+        try {
+
+            String encryptedPassword = passwordEncoder.encode(userPostRequest.getPassword());
+
+            User user = new User();
+            user.setUsername(userPostRequest.getUsername());
+            user.setPassword(encryptedPassword);
+            user.setEmail(userPostRequest.getEmail());
+            user.setEnabled(true);
+            User savedUser = userRepository.save(user);
+            savedUser.addAuthority("ROLE_USER");
+
+            userRepository.save(savedUser);
+            return savedUser.getUsername();
+        } catch (Exception ex) {
+            throw new BadRequestException("Cannot create user.");
+        }
+    }
+
 
     @Override
-//    stop gevonden users in een dto zonder wachtwoord zodat deze nooit de database verlaat.
+    public void disableUser(long user_id) {
+        Optional<User> optionalUser = userRepository.findById(user_id);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            user.setEnabled(false);
+            userRepository.save(user);
+        } else {
+            throw new UserNotFoundException();
+        }
+    }
+
+    @Override
+    public void updateUser(long user_id, UserPostRequest userPostRequest) {
+        if (!userRepository.existsById(user_id)) throw new RecordNotFoundException();
+
+        String encryptedPassword = passwordEncoder.encode(userPostRequest.getPassword());
+
+        User existingUser = userRepository.findById(user_id).get();
+        existingUser.setUsername(userPostRequest.getUsername());
+        existingUser.setPassword(encryptedPassword);
+        existingUser.setEmail(userPostRequest.getEmail());
+        userRepository.save(existingUser);
+    }
+
+
+    @Override
+//    stop gevonden users in een dto zonder wachtwoord zodat deze nooit de backend verlaat.
     public Set<UserDetailsResponse> findAll() {
         long user_id = 0;
         String username = null;
@@ -83,39 +131,9 @@ public class UserServiceImpl implements UserService {
             authorities = user.get().getAuthorities();
             games = user.get().getGames();
         }
-
         return new UserDetailsResponse(user_id, username, enabled, email, authorities, games );
     }
 
-    @Override
-    public String create(UserPostRequest userPostRequest) {
-        try {
-
-            String encryptedPassword = passwordEncoder.encode(userPostRequest.getPassword());
-
-            User user = new User();
-            user.setUsername(userPostRequest.getUsername());
-            user.setPassword(encryptedPassword);
-            user.setEmail(userPostRequest.getEmail());
-            user.setEnabled(true);
-            User savedUser = userRepository.save(user);
-            savedUser.addAuthority("ROLE_USER");
-
-            userRepository.save(savedUser);
-            return savedUser.getUsername();
-        } catch (Exception ex) {
-            throw new BadRequestException("Cannot create user.");
-        }
-    }
-
-    @Override
-    public void delete(String username) {
-        Optional<User> possibleUser = userRepository.findByUsername(username);
-        if (possibleUser.isPresent()) {
-            User user = possibleUser.get();
-            userRepository.delete(user);
-        }
-    }
 
     @Override
     public UserRateResponse getUserById(long user_id) {
@@ -124,9 +142,7 @@ public class UserServiceImpl implements UserService {
             Optional<User> user = userRepository.findById(user_id);
             if (user.isPresent()) {
                 ratedUserName = user.get().username;
-
             }
-
         }
         catch (UserNotFoundException e) {
             throw new UserNotFoundException();
@@ -134,17 +150,13 @@ public class UserServiceImpl implements UserService {
         return new UserRateResponse(ratedUserName);
     }
 
-    @Override
-    public void disableUser(long user_id) {
-        Optional<User> optionalUser = userRepository.findById(user_id);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            user.setEnabled(false);
-            userRepository.save(user);
-        } else {
-            throw new UserNotFoundException();
-        }
-    }
+
+
+
+
+
+
+// onderstaande functies worden alleen in de admin controller gebruikt
 
     public Set<UserDetailsResponse> findAllByDisabled() {
         long user_id = 0;
@@ -168,6 +180,15 @@ public class UserServiceImpl implements UserService {
             userDetailsResponses.add(userDetailsResponse);
         }
         return userDetailsResponses;
+    }
+
+    @Override
+    public void delete(String username) {
+        Optional<User> possibleUser = userRepository.findByUsername(username);
+        if (possibleUser.isPresent()) {
+            User user = possibleUser.get();
+            userRepository.delete(user);
+        }
     }
 
 

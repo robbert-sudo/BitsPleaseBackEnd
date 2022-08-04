@@ -3,6 +3,7 @@ package bitspleaseApp.controller;
 import bitspleaseApp.dto.request.UserPostRequest;
 import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.dto.response.UserRateResponse;
+import bitspleaseApp.model.User;
 import bitspleaseApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,30 @@ public class UserController {
         this.userService = userService;
     }
 
+
+    @PostMapping(value = "/user")
+    public ResponseEntity<Object> createUser(@RequestBody UserPostRequest userPostRequest) {
+
+        String newUsername = userService.create(userPostRequest);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{username}")
+                .buildAndExpand(newUsername).toUri();
+
+        return ResponseEntity.created(location).build();
+    }
+
+    @PatchMapping(value = "/user/delete/{user_id}")
+    public ResponseEntity disableUser(@PathVariable("user_id") long user_id) {
+        userService.disableUser(user_id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping(value = "/user/{user_id}")
+    public ResponseEntity<Object> updateUser(@PathVariable("user_id") long user_id, @RequestBody UserPostRequest userPostRequest) {
+        userService.updateUser(user_id, userPostRequest);
+        return ResponseEntity.ok("user aangepast.");
+    }
+
     @GetMapping(value = "/users")
     public ResponseEntity getUsers() {
         Set<UserDetailsResponse> userDetailsResponses = userService.findAll();
@@ -42,22 +67,5 @@ public class UserController {
         return ResponseEntity.ok(userRateResponse);
     }
 
-
-    @PostMapping(value = "/user")
-    public ResponseEntity<Object> createUser(@RequestBody UserPostRequest userPostRequest) {
-
-        String newUsername = userService.create(userPostRequest);
-
-        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{username}")
-                .buildAndExpand(newUsername).toUri();
-
-        return ResponseEntity.created(location).build();
-    }
-
-    @PatchMapping(value = "/user/{user_id}")
-    public ResponseEntity<Object> disableUser(@PathVariable("user_id") long user_id) {
-        userService.disableUser(user_id);
-        return ResponseEntity.noContent().build();
-    }
 
 }
