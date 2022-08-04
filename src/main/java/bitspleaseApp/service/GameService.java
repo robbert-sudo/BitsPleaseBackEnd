@@ -20,4 +20,6 @@ public interface GameService {
     Iterable<Game> findBySystem(String system);
 
     Optional<Game> findById(long id);
+
+    Iterable<Game> findBySystemAndNameContains(String system, String name);
 }

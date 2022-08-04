@@ -66,4 +66,11 @@ public class  GameController {
     }
 
 
+
+    @GetMapping(value = "/systemandname/{system}")
+    public ResponseEntity findBySystemAndName(@PathVariable String system,@RequestParam(value = "name", required = true) String name) {
+        Iterable<Game> games = gameService.findBySystemAndNameContains(system, name);
+        return ResponseEntity.ok(games);
+    }
+
 }
