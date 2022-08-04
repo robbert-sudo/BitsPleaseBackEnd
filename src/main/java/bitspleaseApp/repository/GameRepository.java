@@ -14,4 +14,5 @@ public interface GameRepository extends CrudRepository<Game, Long> {
 
     Iterable<Game> findBySystemAndNameContains(String system, String name);
 
+    Iterable<Game> findAllByUploader(long uploader);
 }

@@ -26,7 +26,7 @@ public class GameServiceImplTest {
         game.setName("super mario land");
         game.setSystem("gameboy");
         game.setDeveloper("nintendo");
-        game.setUploader_id(1);
+        game.setUploader(1);
         game.setUploader_name("admin");
         game.setPrice(new BigDecimal("25.50"));
         fakeResults.add(game);
@@ -36,7 +36,7 @@ public class GameServiceImplTest {
         game.setName("super metroid");
         game.setSystem("snes");
         game.setDeveloper("nintendo");
-        game.setUploader_id(1);
+        game.setUploader(1);
         game.setUploader_name("admin");
         game.setPrice(new BigDecimal("75.50"));
         fakeResults.add(game2);
@@ -46,7 +46,7 @@ public class GameServiceImplTest {
         game.setName("super mario kart");
         game.setSystem("snes");
         game.setDeveloper("nintendo");
-        game.setUploader_id(2);
+        game.setUploader(2);
         game.setUploader_name("user");
         game.setPrice(new BigDecimal("85.50"));
         fakeResults.add(game3);

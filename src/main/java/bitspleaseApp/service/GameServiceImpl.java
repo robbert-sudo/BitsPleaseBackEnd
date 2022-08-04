@@ -59,7 +59,7 @@ public class GameServiceImpl implements GameService {
         existingGame.setName(game.getName());
         existingGame.setSystem(game.getSystem());
         existingGame.setDeveloper(game.getDeveloper());
-        existingGame.setUploader_id(game.getUploader_id());
+        existingGame.setUploader(game.getUploader());
         existingGame.setUploader_name(game.getUploader_name());
         existingGame.setPrice(game.getPrice());
         existingGame.setImage(game.getImage());
@@ -67,5 +67,9 @@ public class GameServiceImpl implements GameService {
 
     }
 
+    public Iterable<Game> findAllByUploader(long uploader) {
+        Iterable<Game> games = gameRepository.findAllByUploader(uploader);
+        return games;
+    }
 
 }

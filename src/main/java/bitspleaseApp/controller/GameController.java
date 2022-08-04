@@ -10,13 +10,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "games")
-public class  GameController {
+public class GameController {
 
     private GameService gameService;
 
     @Autowired
-    public
-    GameController(GameService gameService) {
+    public GameController(GameService gameService) {
         this.gameService = gameService;
     }
 
@@ -28,7 +27,7 @@ public class  GameController {
         } else {
             games = gameService.findByName(name);
         }
-                return ResponseEntity.ok(games);
+        return ResponseEntity.ok(games);
     }
 
 
@@ -66,11 +65,15 @@ public class  GameController {
     }
 
 
-
     @GetMapping(value = "/systemandname/{system}")
-    public ResponseEntity findBySystemAndName(@PathVariable String system,@RequestParam(value = "name", required = true) String name) {
+    public ResponseEntity findBySystemAndName(@PathVariable String system, @RequestParam(value = "name", required = true) String name) {
         Iterable<Game> games = gameService.findBySystemAndNameContains(system, name);
         return ResponseEntity.ok(games);
     }
 
+    @GetMapping(value = "/uploader/{uploader}")
+    public ResponseEntity findByUploaderId(@PathVariable long uploader) {
+        Iterable<Game> games = gameService.findAllByUploader(uploader);
+        return ResponseEntity.ok(games);
+    }
 }

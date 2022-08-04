@@ -29,7 +29,7 @@ public class User implements Serializable {
 
     @OneToMany(
             targetEntity = Game.class,
-            mappedBy = "uploader_id",
+            mappedBy = "uploader",
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER

@@ -22,4 +22,6 @@ public interface GameService {
     Optional<Game> findById(long id);
 
     Iterable<Game> findBySystemAndNameContains(String system, String name);
+
+    Iterable<Game> findAllByUploader(long uploader);
 }
