@@ -85,6 +85,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(PUT, "/games/**").authenticated()
                 .antMatchers("/sellerratings/**").authenticated()
                 .antMatchers(GET,"/authenticated").authenticated()
+                .antMatchers(GET, "/uploader/**").authenticated()
 
                 .anyRequest().denyAll()
                 .and()

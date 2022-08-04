@@ -23,7 +23,7 @@ public class Game implements Serializable {
     public String developer;
 
     @Column(nullable = false)
-    public long uploader_id;
+    public long uploader;
 
     @Column(nullable = false)
     public String uploader_name;
@@ -38,10 +38,10 @@ public class Game implements Serializable {
 
     }
 
-    public Game(String name, String system, long uploader_id, String uploader_name, BigDecimal price) {
+    public Game(String name, String system, long uploader, String uploader_name, BigDecimal price) {
         this.name = name;
         this.system = system;
-        this.uploader_id = uploader_id;
+        this.uploader = uploader;
         this.uploader_name = uploader_name;
         this.price = price;
     }
@@ -80,12 +80,12 @@ public class Game implements Serializable {
         this.developer = developer;
     }
 
-    public long getUploader_id() {
-        return uploader_id;
+    public long getUploader() {
+        return uploader;
     }
 
-    public void setUploader_id(long uploader_id) {
-        this.uploader_id = uploader_id;
+    public void setUploader(long uploader) {
+        this.uploader = uploader;
     }
 
     public String getUploader_name() {return uploader_name;}
