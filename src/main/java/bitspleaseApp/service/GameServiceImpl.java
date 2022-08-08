@@ -1,5 +1,6 @@
 package bitspleaseApp.service;
 
+import bitspleaseApp.dto.request.GamePatchRequest;
 import bitspleaseApp.repository.GameRepository;
 import bitspleaseApp.exceptions.RecordNotFoundException;
 import bitspleaseApp.model.Game;
@@ -27,11 +28,13 @@ public class GameServiceImpl implements GameService {
     }
 
     public Iterable<Game> findBySystemAndNameContains(String system, String name) {
-      Iterable<Game> games = gameRepository.findBySystemAndNameContains(system, name);
-      return games;
+        Iterable<Game> games = gameRepository.findBySystemAndNameContains(system, name);
+        return games;
     }
 
-    public Optional<Game> findById(long id) { return gameRepository.findById(id); }
+    public Optional<Game> findById(long id) {
+        return gameRepository.findById(id);
+    }
 
     public Iterable<Game> findBySystem(String system) {
         return gameRepository.findBySystem(system);
@@ -63,6 +66,27 @@ public class GameServiceImpl implements GameService {
         existingGame.setUploader_name(game.getUploader_name());
         existingGame.setPrice(game.getPrice());
         existingGame.setImage(game.getImage());
+        gameRepository.save(existingGame);
+
+    }
+
+    @Override
+    public void patchGame(long id, GamePatchRequest gamePatchRequest) {
+        if (!gameRepository.existsById(id)) throw new RecordNotFoundException();
+        Game existingGame = gameRepository.findById(id).get();
+
+        if (gamePatchRequest.getName() != "") {
+            existingGame.setName(gamePatchRequest.getName());
+        }
+        if (gamePatchRequest.getSystem() != "") {
+            existingGame.setSystem(gamePatchRequest.getSystem());
+        }
+        if (gamePatchRequest.getDeveloper() != "") {
+            existingGame.setDeveloper(gamePatchRequest.getDeveloper());
+        }
+        if (gamePatchRequest.getPrice() != null) {
+            existingGame.setPrice(gamePatchRequest.getPrice());
+        }
         gameRepository.save(existingGame);
 
     }
