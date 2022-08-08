@@ -1,5 +1,6 @@
 package bitspleaseApp.controller;
 
+import bitspleaseApp.dto.request.UserPatchRequest;
 import bitspleaseApp.dto.request.UserPostRequest;
 import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.dto.response.UserRateResponse;
@@ -44,8 +45,8 @@ public class UserController {
     }
 
     @PatchMapping(value = "/user/{user_id}")
-    public ResponseEntity<Object> updateUser(@PathVariable("user_id") long user_id, @RequestBody UserPostRequest userPostRequest) {
-        userService.updateUser(user_id, userPostRequest);
+    public ResponseEntity<Object> updateUser(@PathVariable("user_id") long user_id, @RequestBody UserPatchRequest userPatchRequest) {
+        userService.updateUser(user_id, userPatchRequest);
         return ResponseEntity.ok("user aangepast.");
     }
 
