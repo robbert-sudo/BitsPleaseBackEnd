@@ -1,6 +1,7 @@
 package bitspleaseApp.service;
 
-import bitspleaseApp.dto.request.UserPatchRequest;
+import bitspleaseApp.dto.request.UserEmailPatchRequest;
+
 import bitspleaseApp.dto.request.UserPostRequest;
 import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.dto.response.UserRateResponse;
@@ -74,7 +75,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(long user_id, UserPatchRequest userPatchRequest) {
+    public void updateUser(long user_id, UserEmailPatchRequest userEmailPatchRequest) {
         if (!userRepository.existsById(user_id)) throw new RecordNotFoundException();
 
 //        String encryptedPassword = passwordEncoder.encode(userPostRequest.getPassword());
@@ -82,7 +83,7 @@ public class UserServiceImpl implements UserService {
         User existingUser = userRepository.findById(user_id).get();
 //        existingUser.setUsername(username);
 //        existingUser.setPassword(encryptedPassword);
-        existingUser.setEmail(userPatchRequest.getEmail());
+        existingUser.setEmail(userEmailPatchRequest.getEmail());
         userRepository.save(existingUser);
     }
 

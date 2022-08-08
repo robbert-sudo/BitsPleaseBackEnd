@@ -1,6 +1,6 @@
 package bitspleaseApp.service;
 
-import bitspleaseApp.dto.request.UserPatchRequest;
+import bitspleaseApp.dto.request.UserEmailPatchRequest;
 import bitspleaseApp.dto.request.UserPostRequest;
 import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.dto.response.UserRateResponse;
@@ -15,7 +15,7 @@ public interface UserService {
 
     void disableUser(long user_id);
 
-   void updateUser(long user_id, UserPatchRequest userPatchRequest);
+   void updateUser(long user_id, UserEmailPatchRequest userEmailPatchRequest);
 
     public Set<UserDetailsResponse> findAll();
 
