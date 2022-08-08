@@ -68,25 +68,38 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers(POST, "/user").permitAll()
+                .antMatchers(GET,"/user/**").authenticated()
+                .antMatchers(PATCH, "/user/{user_id}").authenticated()
+                .antMatchers(DELETE, "/user/**").authenticated()
+                .antMatchers(PATCH, "/user/delete/**").authenticated()
+
                 .antMatchers(PATCH,"/users/{^[\\w]$}/password").authenticated()
                 .antMatchers(GET, "/users").hasRole("ADMIN")
                 .antMatchers("/users/**").authenticated()
-                .antMatchers(GET,"/user/**").authenticated()
-                .antMatchers(POST, "/user").permitAll()
-                .antMatchers(PATCH, "/user/{user_id}").authenticated()
-                .antMatchers(DELETE, "/user/**").authenticated()
-                .antMatchers("/customers/**").hasRole("USER")
+
+
+
+
+//                .antMatchers("/customers/**").hasRole("USER")
                 .antMatchers(POST,"/authenticate").permitAll()
-                .antMatchers(GET,"/games/**").authenticated()
-                .antMatchers(GET,"/games/systemandname/{system}").authenticated()
-                .antMatchers(POST,"/games").authenticated()
-                .antMatchers(DELETE,"/games/**").authenticated()
-                .antMatchers(PUT, "/games/**").authenticated()
+
+                .antMatchers("/games/**").authenticated() //omvat alle onderstaande antmatchers van games?!
+
+//                .antMatchers(GET,"/games/**").authenticated()
+//                .antMatchers(GET,"/games/systemandname/{system}").authenticated()
+//                .antMatchers(POST,"/games").authenticated()
+//                .antMatchers(DELETE,"/games/**").authenticated()
+//                .antMatchers(PUT, "/games/**").authenticated()
+//                .antMatchers(GET, "/games/uploader/**").authenticated()
+
+
                 .antMatchers("/sellerratings/**").authenticated()
+
                 .antMatchers(GET,"/authenticated").authenticated()
-                .antMatchers(GET, "/uploader/**").authenticated()
-                .antMatchers(PATCH, "/user/delete/**").authenticated()
+
+                .antMatchers("/admin/**").hasRole("ADMIN")
+
 
                 .anyRequest().denyAll()
                 .and()
