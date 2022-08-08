@@ -1,7 +1,9 @@
 package bitspleaseApp.controller;
 
+import bitspleaseApp.dto.request.GamePatchRequest;
 import bitspleaseApp.model.Game;
 import bitspleaseApp.service.GameService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +60,12 @@ public class GameController {
     public ResponseEntity updateGame(@PathVariable long id, @RequestBody Game game) {
         gameService.updateGame(id, game);
         return ResponseEntity.ok("game aangepast.");
+    }
+
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity patchGame(@PathVariable long id, @RequestBody GamePatchRequest gamePatchRequest) {
+        gameService.patchGame(id, gamePatchRequest);
+        return ResponseEntity.ok("game gepatched");
     }
 
     @GetMapping(value = "/systemandname/{system}")
