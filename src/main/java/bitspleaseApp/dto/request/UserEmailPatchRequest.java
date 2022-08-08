@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPatchRequest {
+public class UserEmailPatchRequest {
 
     private String email;
 
