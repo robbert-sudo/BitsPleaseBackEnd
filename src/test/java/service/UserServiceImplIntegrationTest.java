@@ -10,7 +10,7 @@ import bitspleaseApp.service.UserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+//import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class UserServiceImplIntegrationTest {
     }
 
     @Test
-    @DisplayName("test of user_id van opgehaalde user klopt")
+    @DisplayName("")
     public void testGetUserByUserName() {
         user = new User();
         user.setUser_id(1);
