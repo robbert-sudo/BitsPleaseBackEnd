@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import bitspleaseApp.model.Game;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 import bitspleaseApp.model.Authority;
 import bitspleaseApp.model.Game;
