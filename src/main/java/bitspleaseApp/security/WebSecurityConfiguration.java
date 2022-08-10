@@ -80,7 +80,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(GET, "/users").hasRole("ADMIN")
                 .antMatchers("/users/**").authenticated()
 
-
+                .antMatchers("/admin/*").permitAll() //nog veranderen
 
 
 //                .antMatchers("/customers/**").hasRole("USER")
