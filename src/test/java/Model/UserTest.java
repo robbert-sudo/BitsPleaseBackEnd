@@ -3,6 +3,7 @@ package Model;
 import bitspleaseApp.model.Authority;
 import bitspleaseApp.model.Game;
 import bitspleaseApp.model.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -13,15 +14,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
 
+    private User user;
+
+    @BeforeEach
+    void setUp() {
+        this.user = new User("Bob", "password", "Bob@bobmail.com");
+    }
+
+
     @Test
     public void testGetUserNameAndEmail() {
 
         //Arrange
-        User user = new User("Bob", "password", "Bob@bobmail.com");
+
 
         //act
         String expectedNameAndEmail = "Bob Bob@bobmail.com";
-        String actualNameAndEmail = user.getNameAndEmail();
+        String actualNameAndEmail = this.user.getNameAndEmail();
 
         // assert
         assertEquals(actualNameAndEmail, expectedNameAndEmail);
@@ -31,13 +40,13 @@ public class UserTest {
     public void testGetAuthorities() {
 
         //Arrange
-
-        User user = new User();
+//
+//        User user = new User();
         Authority authority = new Authority();
         Set<Authority> authorityList = new HashSet<>();
 
-        user.setUser_id(1);
-        user.setUsername("Bob");
+//        user.setUser_id(1);
+//        user.setUsername("Bob");
 
         authority.setUser_id(1);
         authority.setUsername("Bob");
@@ -58,9 +67,9 @@ public class UserTest {
     @Test
     public void testGetGames() {
         //Arrange
-        User user = new User();
-        user.setUser_id(1);
-        user.setUsername("Bob");
+//        User user = new User();
+//        user.setUser_id(1);
+//        user.setUsername("Bob");
 
         Game game = new Game();
         game.setId(1);

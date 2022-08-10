@@ -25,9 +25,9 @@ public interface UserService {
 
 
 //onderstaande functies worden alleen gebruikt in de admin controller
-    Set<UserDetailsResponse> findAllByDisabled();
+//    Set<UserDetailsResponse> findAllByDisabled();
 
-    void delete(String username);
+//    void delete(String username);
 
 
 }
