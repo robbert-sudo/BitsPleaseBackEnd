@@ -11,5 +11,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     Optional<User> findById(long user_id);
 
-    Iterable<User> findAllByEnabled(boolean b);
+//    Iterable<User> findAllByEnabled(boolean b); zit nu in adminRepository
 }

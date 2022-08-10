@@ -18,10 +18,10 @@ public class UserAuthenticateServiceImpl implements UserAuthenticateService {
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    @Autowired
+//    @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
+//    @Autowired
     JwtUtil jwtUtil;
 
     @Override
