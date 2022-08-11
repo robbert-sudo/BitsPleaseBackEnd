@@ -3,7 +3,6 @@ package bitspleaseApp.controller;
 import bitspleaseApp.dto.request.GamePatchRequest;
 import bitspleaseApp.model.Game;
 import bitspleaseApp.service.GameService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +20,15 @@ public class GameController {
         this.gameService = gameService;
     }
 
+
+
+    @PostMapping
+    public ResponseEntity addGame(@RequestBody Game game) {
+        gameService.save(game);
+        return ResponseEntity.ok(game);
+    }
+
+
     @GetMapping
     public ResponseEntity getGames(@RequestParam(value = "name", required = false) String name) {
         Iterable<Game> games;
@@ -33,7 +41,7 @@ public class GameController {
     }
 
     @GetMapping(value = "/id/{id}")
-    public ResponseEntity findGamesById(@PathVariable long id) {
+    public ResponseEntity findGameById(@PathVariable long id) {
         Optional<Game> game = gameService.findById(id);
         return ResponseEntity.ok(game);
     }
@@ -44,11 +52,7 @@ public class GameController {
         return ResponseEntity.ok(games);
     }
 
-    @PostMapping
-    public ResponseEntity addGame(@RequestBody Game game) {
-        gameService.save(game);
-        return ResponseEntity.ok(game);
-    }
+
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteGame(@PathVariable long id) {
