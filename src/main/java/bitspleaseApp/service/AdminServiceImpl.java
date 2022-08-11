@@ -26,6 +26,7 @@ public class AdminServiceImpl implements AdminService {
 
     }
 
+    @Override
     public Set<UserDetailsResponse> findAllByDisabled() {
         long user_id = 0;
         String username = null;
