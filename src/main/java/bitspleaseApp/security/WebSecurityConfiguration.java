@@ -80,7 +80,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(GET, "/users").hasRole("ADMIN")
                 .antMatchers("/users/**").authenticated()
 
-                .antMatchers("/admin/*").permitAll() //nog veranderen
+                .antMatchers("/admin/*").hasRole("ADMIN")
 
 
 //                .antMatchers("/customers/**").hasRole("USER")
@@ -88,15 +88,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/games/**").authenticated() //omvat alle onderstaande antmatchers van games?!
 
-//                .antMatchers(GET,"/games/**").authenticated()
-//                .antMatchers(GET,"/games/systemandname/{system}").authenticated()
-//                .antMatchers(POST,"/games").authenticated()
-//                .antMatchers(DELETE,"/games/**").authenticated()
-//                .antMatchers(PUT, "/games/**").authenticated()
-//                .antMatchers(GET, "/games/uploader/**").authenticated()
 
 
+                .antMatchers("/sellerratings").authenticated()
                 .antMatchers("/sellerratings/**").authenticated()
+
+                .antMatchers("/getaverage/**").authenticated()
 
                 .antMatchers(GET,"/authenticated").authenticated()
 

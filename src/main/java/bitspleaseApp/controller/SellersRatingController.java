@@ -17,6 +17,8 @@ public class SellersRatingController {
         this.sellersRatingService = sellersRatingService;
     }
 
+
+
     @PostMapping
     public ResponseEntity addSellerRating(@RequestBody SellersRating sellersRating) {
         sellersRatingService.save(sellersRating);
