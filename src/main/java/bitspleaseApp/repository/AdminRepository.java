@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface AdminRepository extends CrudRepository<User, Long> {
 
-
     Iterable<User> findAllByEnabled(boolean b);
 
     Optional<User> findByUsername(String username);
+
 }

@@ -47,10 +47,9 @@ public class UserRepositoryTest {
     @Test
     void testFindUserById() {
         //Act
-        int id = 7;
-        Long longId = (long) id;
         Optional<User> testUser = userRepository.findByUsername("Bob");
-        Optional<User> actualUser = userRepository.findById(longId);
+        Long id = testUser.get().getUser_id();
+        Optional<User> actualUser = userRepository.findById(id);
 
         String expectedUserName = "Bob";
         String actualUserName = actualUser.get().getUsername();
