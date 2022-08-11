@@ -78,11 +78,7 @@ public class UserServiceImpl implements UserService {
     public void updateUser(long user_id, UserEmailPatchRequest userEmailPatchRequest) {
         if (!userRepository.existsById(user_id)) throw new RecordNotFoundException();
 
-//        String encryptedPassword = passwordEncoder.encode(userPostRequest.getPassword());
-
         User existingUser = userRepository.findById(user_id).get();
-//        existingUser.setUsername(username);
-//        existingUser.setPassword(encryptedPassword);
         existingUser.setEmail(userEmailPatchRequest.getEmail());
         userRepository.save(existingUser);
     }
@@ -185,13 +181,13 @@ public class UserServiceImpl implements UserService {
 //    }
 
 //    @Override
-    public void delete(String username) {
-        Optional<User> possibleUser = userRepository.findByUsername(username);
-        if (possibleUser.isPresent()) {
-            User user = possibleUser.get();
-            userRepository.delete(user);
-        }
-    }
+//    public void delete(String username) {
+//        Optional<User> possibleUser = userRepository.findByUsername(username);
+//        if (possibleUser.isPresent()) {
+//            User user = possibleUser.get();
+//            userRepository.delete(user);
+//        }
+//    }
 
 
 }
