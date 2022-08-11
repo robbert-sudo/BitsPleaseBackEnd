@@ -86,7 +86,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/customers/**").hasRole("USER")
                 .antMatchers(POST,"/authenticate").permitAll()
 
-                .antMatchers("/games/**").authenticated() //omvat alle onderstaande antmatchers van games?!
+                .antMatchers("/games/**").authenticated()
 
 
 
