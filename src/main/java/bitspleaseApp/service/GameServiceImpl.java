@@ -5,10 +5,8 @@ import bitspleaseApp.repository.GameRepository;
 import bitspleaseApp.exceptions.RecordNotFoundException;
 import bitspleaseApp.model.Game;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -56,7 +54,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void updateGame(long id, Game game) {
+    public Optional<Game> updateGame(long id, Game game) {
         if (!gameRepository.existsById(id)) throw new RecordNotFoundException();
         Game existingGame = gameRepository.findById(id).get();
         existingGame.setName(game.getName());
@@ -67,6 +65,9 @@ public class GameServiceImpl implements GameService {
         existingGame.setPrice(game.getPrice());
         existingGame.setImage(game.getImage());
         gameRepository.save(existingGame);
+        Optional<Game> savedGame = findById(id);
+
+        return savedGame;
 
     }
 
