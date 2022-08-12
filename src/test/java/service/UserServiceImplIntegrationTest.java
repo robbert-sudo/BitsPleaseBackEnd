@@ -47,7 +47,7 @@ public class UserServiceImplIntegrationTest {
         String userName = "Bob";
         long expectedUser_id = 1;
 
-        UserDetailsResponse found = userService.getUser(userName);
+        UserDetailsResponse found = userService.getUserByUserName(userName);
         assertEquals(found.getUser_id(), expectedUser_id);
     }
 

@@ -69,7 +69,7 @@ public class SellersRatingServiceImplIntegrationTest {
                 .when(sellersRatingRepository.findAllByRatedUserId(sellersRating.getRatedUserId()))
                 .thenReturn(expectedSellersRating);
 
-        float actualAverage = sellersRatingService.getAverageRatingBySeller(1);
+        float actualAverage = sellersRatingService.getAverageRatingByUserId(1);
         float expectedAverage = 7.5f;
 
         assertEquals(expectedAverage, actualAverage);
