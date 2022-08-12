@@ -34,7 +34,7 @@ public class SellersRatingServiceImpl implements SellersRatingService {
     }
 
     @Override
-    public float getAverageRatingBySeller(long rated_user_id) {
+    public float getAverageRatingByUserId(long rated_user_id) {
 
         float total = 0;
         float size = 0;

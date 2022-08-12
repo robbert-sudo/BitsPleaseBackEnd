@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserDetailsResponse getUser(String username1) {
+    public UserDetailsResponse getUserByUserName(String username1) {
         long user_id = 0;
         String username = null;
         boolean enabled = false;
@@ -120,6 +120,7 @@ public class UserServiceImpl implements UserService {
         Set<Authority> authorities = null;
         Set<Game> games = null;
 
+        try {
         Optional<User> user = userRepository.findByUsername(username1);
         if (user.isPresent()) {
             user_id = user.get().getUser_id();
@@ -128,6 +129,13 @@ public class UserServiceImpl implements UserService {
             email = user.get().getEmail();
             authorities = user.get().getAuthorities();
             games = user.get().getGames();
+        }
+        else {
+            throw new UserNotFoundException();
+       }
+        }
+        catch (UserNotFoundException e) {
+            throw new UserNotFoundException();
         }
         return new UserDetailsResponse(user_id, username, enabled, email, authorities, games );
     }
@@ -140,6 +148,9 @@ public class UserServiceImpl implements UserService {
             Optional<User> user = userRepository.findById(user_id);
             if (user.isPresent()) {
                 ratedUserName = user.get().username;
+
+            } else {
+                throw new UserNotFoundException();
             }
         }
         catch (UserNotFoundException e) {

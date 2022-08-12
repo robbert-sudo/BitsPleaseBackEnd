@@ -38,8 +38,8 @@ public class SellersRatingController {
     }
 
     @GetMapping(value = "/getaverage/{rated_user_id}")
-    public ResponseEntity getAverageRatingBySeller(@PathVariable long rated_user_id) {
-        float averageSellerRating = sellersRatingService.getAverageRatingBySeller(rated_user_id);
+    public ResponseEntity getAverageRatingByUserId(@PathVariable long rated_user_id) {
+        float averageSellerRating = sellersRatingService.getAverageRatingByUserId(rated_user_id);
         return ResponseEntity.ok(averageSellerRating);
     }
 

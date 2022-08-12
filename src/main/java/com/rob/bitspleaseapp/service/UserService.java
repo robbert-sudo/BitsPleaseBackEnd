@@ -18,7 +18,7 @@ public interface UserService {
 
     public Set<UserDetailsResponse> findAll();
 
-    public UserDetailsResponse getUser(String username);
+    public UserDetailsResponse getUserByUserName(String username);
 
     public UserRateResponse getUserById(long user_id);
 
