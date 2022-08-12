@@ -1,10 +1,10 @@
 package service;
 
-import bitspleaseApp.BitspleaseApplication;
-import bitspleaseApp.dto.response.UserDetailsResponse;
-import bitspleaseApp.model.User;
-import bitspleaseApp.repository.UserRepository;
-import bitspleaseApp.service.UserService;
+import com.rob.bitspleaseapp.BitspleaseApplication;
+import com.rob.bitspleaseapp.dto.response.UserDetailsResponse;
+import com.rob.bitspleaseapp.model.User;
+import com.rob.bitspleaseapp.repository.UserRepository;
+import com.rob.bitspleaseapp.service.UserService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

@@ -1,8 +1,8 @@
 package repository;
 
-import bitspleaseApp.BitspleaseApplication;
-import bitspleaseApp.model.Game;
-import bitspleaseApp.repository.GameRepository;
+import com.rob.bitspleaseapp.BitspleaseApplication;
+import com.rob.bitspleaseapp.model.Game;
+import com.rob.bitspleaseapp.repository.GameRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

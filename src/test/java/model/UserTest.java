@@ -1,8 +1,8 @@
 package model;
 
-import bitspleaseApp.model.Authority;
-import bitspleaseApp.model.Game;
-import bitspleaseApp.model.User;
+import com.rob.bitspleaseapp.model.Authority;
+import com.rob.bitspleaseapp.model.Game;
+import com.rob.bitspleaseapp.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
