@@ -40,13 +40,8 @@ public class UserTest {
     public void testGetAuthorities() {
 
         //Arrange
-//
-//        User user = new User();
         Authority authority = new Authority();
         Set<Authority> authorityList = new HashSet<>();
-
-//        user.setUser_id(1);
-//        user.setUsername("Bob");
 
         authority.setUser_id(1);
         authority.setUsername("Bob");
@@ -61,16 +56,13 @@ public class UserTest {
         Set<Authority> expectedAuthority = new HashSet<>();
         expectedAuthority.add(authority);
 
+        //Assert
         assertEquals(actualAuthority, expectedAuthority);
     }
 
     @Test
     public void testGetGames() {
         //Arrange
-//        User user = new User();
-//        user.setUser_id(1);
-//        user.setUsername("Bob");
-
         Game game = new Game();
         game.setId(1);
         game.setUploader(1);
@@ -90,7 +82,6 @@ public class UserTest {
         actualGames = user.getGames();
 
         //Assert
-
         assertEquals(actualGames, games);
 
     }

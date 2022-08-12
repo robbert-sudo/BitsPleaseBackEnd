@@ -15,7 +15,6 @@ public class SellersRatingServiceImpl implements SellersRatingService {
         this.sellersRatingRepository = sellersRatingRepository;
     }
 
-
     @Override
     public void save(SellersRating sellersRating) {
         sellersRatingRepository.save(sellersRating);
@@ -26,7 +25,6 @@ public class SellersRatingServiceImpl implements SellersRatingService {
         Iterable<SellersRating> sellersRatings = sellersRatingRepository.findAll();
         return sellersRatings;
     }
-
 
     @Override
     public Iterable<SellersRating> findAllByRatedUserId(long rated_user_id) {

@@ -21,8 +21,7 @@ public class SellersRating {
 
     }
 
-    public SellersRating( long ratedUserId, long rating) { //long rating_id,
-//        this.rating_id = rating_id;
+    public SellersRating( long ratedUserId, long rating) {
         this.ratedUserId = ratedUserId;
         this.rating = rating;
     }

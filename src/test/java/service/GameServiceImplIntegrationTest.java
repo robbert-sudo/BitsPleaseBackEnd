@@ -11,7 +11,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 
 
-
 @SpringBootTest
 @ContextConfiguration(classes = {BitspleaseApplication.class})
 public class GameServiceImplIntegrationTest {

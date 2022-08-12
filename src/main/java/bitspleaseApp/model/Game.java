@@ -97,6 +97,6 @@ public class Game implements Serializable {
     public String getImage() {return image;}
     public void setImage(String image) {this.image = image;}
 
-//    extra comment
+
 
 }
