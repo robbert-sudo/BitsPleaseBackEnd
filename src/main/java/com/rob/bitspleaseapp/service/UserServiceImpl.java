@@ -121,23 +121,20 @@ public class UserServiceImpl implements UserService {
         Set<Game> games = null;
 
         try {
-        Optional<User> user = userRepository.findByUsername(username1);
-        if (user.isPresent()) {
-            user_id = user.get().getUser_id();
-            username = user.get().getUsername();
-            enabled = user.get().isEnabled();
-            email = user.get().getEmail();
-            authorities = user.get().getAuthorities();
-            games = user.get().getGames();
-        }
-        else {
-            throw new UserNotFoundException();
-       }
-        }
-        catch (UserNotFoundException e) {
+            Optional<User> user = userRepository.findByUsername(username1);
+            if (user.isPresent()) {
+                user_id = user.get().getUser_id();
+                username = user.get().getUsername();
+                enabled = user.get().isEnabled();
+                email = user.get().getEmail();
+                authorities = user.get().getAuthorities();
+                games = user.get().getGames();
+            }
+
+        } catch (UserNotFoundException e) {
             throw new UserNotFoundException();
         }
-        return new UserDetailsResponse(user_id, username, enabled, email, authorities, games );
+        return new UserDetailsResponse(user_id, username, enabled, email, authorities, games);
     }
 
 
@@ -148,12 +145,8 @@ public class UserServiceImpl implements UserService {
             Optional<User> user = userRepository.findById(user_id);
             if (user.isPresent()) {
                 ratedUserName = user.get().username;
-
-            } else {
-                throw new UserNotFoundException();
             }
-        }
-        catch (UserNotFoundException e) {
+        } catch (UserNotFoundException e) {
             throw new UserNotFoundException();
         }
         return new UserRateResponse(ratedUserName);

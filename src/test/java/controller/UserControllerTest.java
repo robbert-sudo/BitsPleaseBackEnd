@@ -60,8 +60,8 @@ public class UserControllerTest {
 
 
     @Test
-    void getUserTest(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(get("/user/admin")
+    void getUserByUserNameTest(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(get("/user/{username}", "admin")
                         .with(user("admin")
                                 .password("pass")
                                 .roles("ADMIN")
