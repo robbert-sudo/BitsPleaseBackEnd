@@ -2,7 +2,6 @@ package bitspleaseApp.controller;
 
 import bitspleaseApp.dto.response.UserDetailsResponse;
 import bitspleaseApp.service.AdminService;
-import bitspleaseApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

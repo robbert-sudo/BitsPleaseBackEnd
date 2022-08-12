@@ -64,8 +64,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-//        onlogische volgorde veranderen
-
         http
                 .httpBasic()
                 .and()
@@ -82,13 +80,9 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
                 .antMatchers("/admin/*").hasRole("ADMIN")
 
-
-//                .antMatchers("/customers/**").hasRole("USER")
                 .antMatchers(POST,"/authenticate").permitAll()
 
                 .antMatchers("/games/**").authenticated()
-
-
 
                 .antMatchers("/sellerratings").authenticated()
                 .antMatchers("/sellerratings/**").authenticated()

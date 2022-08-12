@@ -89,8 +89,4 @@ public class AdminServiceImplIntegrationTest {
         assertEquals(expectedLength, userDetailsResponse.size());
     }
 
-
-
-
-
 }

@@ -76,6 +76,7 @@ class GameRepositoryTest {
 
         //act
         Iterable<Game> foundGames = gameRepository.findByNameContains("castlevania");
+
         //assert
         assertEquals(expectedGames, foundGames);
     }
