@@ -1,9 +1,9 @@
 package service;
 
-import bitspleaseApp.BitspleaseApplication;
-import bitspleaseApp.model.Game;
-import bitspleaseApp.repository.GameRepository;
-import bitspleaseApp.service.GameService;
+import com.rob.bitspleaseapp.BitspleaseApplication;
+import com.rob.bitspleaseapp.model.Game;
+import com.rob.bitspleaseapp.repository.GameRepository;
+import com.rob.bitspleaseapp.service.GameService;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

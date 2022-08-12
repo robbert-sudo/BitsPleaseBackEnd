@@ -1,9 +1,9 @@
 package service;
 
-import bitspleaseApp.BitspleaseApplication;
-import bitspleaseApp.model.SellersRating;
-import bitspleaseApp.repository.SellersRatingRepository;
-import bitspleaseApp.service.SellersRatingService;
+import com.rob.bitspleaseapp.BitspleaseApplication;
+import com.rob.bitspleaseapp.model.SellersRating;
+import com.rob.bitspleaseapp.repository.SellersRatingRepository;
+import com.rob.bitspleaseapp.service.SellersRatingService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;

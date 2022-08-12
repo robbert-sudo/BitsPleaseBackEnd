@@ -1,8 +1,8 @@
 package repository;
 
-import bitspleaseApp.BitspleaseApplication;
-import bitspleaseApp.model.SellersRating;
-import bitspleaseApp.repository.SellersRatingRepository;
+import com.rob.bitspleaseapp.BitspleaseApplication;
+import com.rob.bitspleaseapp.model.SellersRating;
+import com.rob.bitspleaseapp.repository.SellersRatingRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

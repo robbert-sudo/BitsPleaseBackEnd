@@ -1,8 +1,8 @@
 package repository;
 
-import bitspleaseApp.BitspleaseApplication;
-import bitspleaseApp.model.User;
-import bitspleaseApp.repository.AdminRepository;
+import com.rob.bitspleaseapp.BitspleaseApplication;
+import com.rob.bitspleaseapp.model.User;
+import com.rob.bitspleaseapp.repository.AdminRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
