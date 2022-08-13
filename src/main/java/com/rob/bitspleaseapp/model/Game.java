@@ -47,7 +47,6 @@ public class Game implements Serializable {
     }
 
 
-
     public long getId() {
         return id;
     }
