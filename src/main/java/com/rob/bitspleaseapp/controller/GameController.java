@@ -24,8 +24,8 @@ public class GameController {
 
     @PostMapping
     public ResponseEntity addGame(@RequestBody Game game) {
-        gameService.save(game);
-        return ResponseEntity.ok(game);
+        Optional<Game> savedGame = gameService.save(game);
+        return ResponseEntity.ok(savedGame);
     }
 
 
@@ -66,8 +66,8 @@ public class GameController {
 
     @PatchMapping(value = "/{id}")
     public ResponseEntity patchGame(@PathVariable long id, @RequestBody GamePatchRequest gamePatchRequest) {
-        gameService.patchGame(id, gamePatchRequest);
-        return ResponseEntity.ok("game gepatched");
+        Optional<Game> patchedGame = gameService.patchGame(id, gamePatchRequest);
+        return ResponseEntity.ok(patchedGame);
     }
 
     @GetMapping(value = "/systemandname/{system}")
