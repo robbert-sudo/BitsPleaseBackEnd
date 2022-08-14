@@ -71,7 +71,9 @@ public class GameControllerTest {
 
     @Test
     void findGameByIdTest(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(get("/games/id/1")
+        long param = 1;
+        Long id = param;
+        mvc.perform(get("/games/id/{id}", id)
                 .with(user("admin")
                         .password("pass")
                         .roles("ADMIN"))
