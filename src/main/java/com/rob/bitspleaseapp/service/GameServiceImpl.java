@@ -72,7 +72,7 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
-    public void patchGame(long id, GamePatchRequest gamePatchRequest) {
+    public Optional<Game> patchGame(long id, GamePatchRequest gamePatchRequest) {
         if (!gameRepository.existsById(id)) throw new RecordNotFoundException();
         Game existingGame = gameRepository.findById(id).get();
 
@@ -89,6 +89,8 @@ public class GameServiceImpl implements GameService {
             existingGame.setPrice(gamePatchRequest.getPrice());
         }
         gameRepository.save(existingGame);
+        Optional<Game> patchedGame = gameRepository.findById(id);
+        return patchedGame;
 
     }
 

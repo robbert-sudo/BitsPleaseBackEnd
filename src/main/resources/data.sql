@@ -1,7 +1,8 @@
 INSERT INTO users (username, password, enabled, email)
 VALUES
 ('admin', '$2y$12$h/DdHgfupi5JPVlmjrCmHefk6I4mdqvP4QLj0bldQHamNeXRQ/zsi', TRUE, 'admin@yoohoo.com'),
-('user', '$2y$12$h/DdHgfupi5JPVlmjrCmHefk6I4mdqvP4QLj0bldQHamNeXRQ/zsi', TRUE, 'user@useless.com');
+('user', '$2y$12$h/DdHgfupi5JPVlmjrCmHefk6I4mdqvP4QLj0bldQHamNeXRQ/zsi', TRUE, 'user@useless.com'),
+('disably', '$2y$12$h/DdHgfupi5JPVlmjrCmHefk6I4mdqvP4QLj0bldQHamNeXRQ/zsi', FALSE, 'dis@abled.user');
 
 INSERT INTO authorities ( user_id, authority, username )
 VALUES

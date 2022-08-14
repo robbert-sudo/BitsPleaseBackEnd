@@ -26,5 +26,5 @@ public interface GameService {
 
     Iterable<Game> findAllByUploader(long uploader);
 
-    void patchGame(long id, GamePatchRequest gamePatchRequest);
+    Optional<Game> patchGame(long id, GamePatchRequest gamePatchRequest);
 }
