@@ -26,9 +26,5 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exception.getMessage());
     }
 
-    @ExceptionHandler(value = NotAuthorizedException.class)
-    public ResponseEntity<Object> exception(NotAuthorizedException exception) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
-    }
 
 }

@@ -1,6 +1,7 @@
 package com.rob.bitspleaseapp.service;
 
 import com.rob.bitspleaseapp.dto.request.GamePatchRequest;
+import com.rob.bitspleaseapp.exceptions.BadRequestException;
 import com.rob.bitspleaseapp.model.Game;
 import com.rob.bitspleaseapp.repository.GameRepository;
 import com.rob.bitspleaseapp.exceptions.RecordNotFoundException;
@@ -22,21 +23,40 @@ public class GameServiceImpl implements GameService {
     }
 
     public Iterable<Game> findByName(String name) {
-        return gameRepository.findByNameContains(name);
+        try {
+            return gameRepository.findByNameContains(name);
+        } catch (RecordNotFoundException e) {
+            throw new RecordNotFoundException();
+        }
     }
 
     public Iterable<Game> findBySystemAndNameContains(String system, String name) {
-        Iterable<Game> games = gameRepository.findBySystemAndNameContains(system, name);
-        return games;
+        try {
+            Iterable<Game> games = gameRepository.findBySystemAndNameContains(system, name);
+            return games;
+        } catch (RecordNotFoundException e) {
+            throw new RecordNotFoundException();
+        }
     }
 
+
     public Optional<Game> findById(long id) {
-        return gameRepository.findById(id);
+        try {
+            Optional<Game> potentialGame = gameRepository.findById(id);
+            return potentialGame;
+        } catch (RecordNotFoundException e) {
+            throw new RecordNotFoundException();
+        }
     }
 
     public Iterable<Game> findBySystem(String system) {
-        return gameRepository.findBySystem(system);
+        try {
+            return gameRepository.findBySystem(system);
+        } catch (RecordNotFoundException e) {
+            throw new RecordNotFoundException();
+        }
     }
+
 
     public Optional<Game> save(Game game) {
         gameRepository.save(game);
@@ -46,10 +66,11 @@ public class GameServiceImpl implements GameService {
 
     public void deleteById(long id) {
         try {
+            if (!gameRepository.existsById(id)) throw new RecordNotFoundException();
             gameRepository.deleteById(id);
-        } catch (IndexOutOfBoundsException ex) {
+        } catch (BadRequestException ex) {
             System.out.println(ex);
-            throw new RecordNotFoundException();
+            throw new BadRequestException();
         }
     }
 
@@ -95,8 +116,13 @@ public class GameServiceImpl implements GameService {
     }
 
     public Iterable<Game> findAllByUploader(long uploader) {
-        Iterable<Game> games = gameRepository.findAllByUploader(uploader);
-        return games;
+        try {
+            Iterable<Game> games = gameRepository.findAllByUploader(uploader);
+            return games;
+        } catch (RecordNotFoundException e) {
+            throw new RecordNotFoundException();
+        }
     }
+
 
 }
