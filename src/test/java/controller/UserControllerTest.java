@@ -60,13 +60,13 @@ public class UserControllerTest {
 
 
     @Test
-    void getUserByUserNameTest(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(get("/user/{username}", "admin")
+    void getUserByUserNameUserNotFoundExceptionTest(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(get("/user/{username}", "bert")
                         .with(user("admin")
                                 .password("pass")
                                 .roles("ADMIN")
                         ))
-                .andExpect(status().isOk());
+                .andExpect(status().isUnauthorized());
     }
 
 
@@ -78,13 +78,13 @@ public class UserControllerTest {
 
 
     @Test
-    void getUserByIdTest(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(get("/user/id/{user_id}", 2)
+    void getUserByIdWithNonExistingUserIdTest(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(get("/user/id/{user_id}", 5)
                         .with(user("admin")
                                 .password("pass")
                                 .roles("ADMIN")
                         ))
-                .andExpect(status().isOk());
+                .andExpect(status().isUnauthorized());
     }
 
 

@@ -26,11 +26,6 @@ public class ExceptionController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(exception.getMessage());
     }
 
-    @ExceptionHandler(value = InvalidPasswordException.class)
-    public ResponseEntity<Object> exception(InvalidPasswordException exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
-    }
-
     @ExceptionHandler(value = NotAuthorizedException.class)
     public ResponseEntity<Object> exception(NotAuthorizedException exception) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exception.getMessage());
