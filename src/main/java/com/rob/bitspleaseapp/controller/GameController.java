@@ -46,11 +46,11 @@ public class GameController {
         return ResponseEntity.ok(game);
     }
 
-    @GetMapping(value = "/system/{system}")
-    public ResponseEntity findGamesBySystem(@PathVariable String system) {
-        Iterable<Game> games = gameService.findBySystem(system);
-        return ResponseEntity.ok(games);
-    }
+//    @GetMapping(value = "/system/{system}")
+//    public ResponseEntity findGamesBySystem(@PathVariable String system) {
+//        Iterable<Game> games = gameService.findBySystem(system);
+//        return ResponseEntity.ok(games);
+//    }
 
     @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteGame(@PathVariable long id) {
